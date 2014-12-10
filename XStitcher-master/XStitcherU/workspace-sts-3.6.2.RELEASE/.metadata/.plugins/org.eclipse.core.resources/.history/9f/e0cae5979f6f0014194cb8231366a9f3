@@ -1,0 +1,26 @@
+# The default database is H2 memory database but I have also
+# added configuration needed to use either MySQL and PostgreSQL.
+ 
+#Database Configuration
+db.driver=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/momentum
+db.username=doomhiker
+db.password=klingond7
+ 
+#Hibernate Configuration
+hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+hibernate.format_sql=true
+hibernate.ejb.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy
+hibernate.show_sql=false
+hibernate.hbm2ddl.auto: update
+ 
+#MessageSource
+message.source.basename=i18n/messages
+message.source.use.code.as.default.message=true
+ 
+#EntityManager
+#Declares the base package of the entity classes
+entitymanager.packages.to.scan=medavie.momentum.domain
+
+logging.level.org.springframework: INFO
+logging.level.org.hibernate: INFO

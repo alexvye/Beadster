@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: vye.config.ITChallengeIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.214 sec - in vye.config.ITChallengeIntegrationTest

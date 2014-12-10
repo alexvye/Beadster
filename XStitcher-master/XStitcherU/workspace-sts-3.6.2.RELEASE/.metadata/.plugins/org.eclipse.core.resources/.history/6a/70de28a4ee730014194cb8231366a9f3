@@ -1,0 +1,40 @@
+package medavie.momentum.config;
+
+import java.util.List;
+
+import medavie.momentum.config.ApplicationContext;
+import medavie.momentum.domain.rest.Team;
+import medavie.momentum.events.fitness.RequestAllTeamsEvent;
+import medavie.momentum.services.TeamService;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = ApplicationContext.class)
+@WebAppConfiguration
+public class CoreDomainIntegrationTest {
+
+  @Autowired
+  TeamService teamService;
+
+  @Test
+  public void readAllTeamsInTheSystem() {
+
+    RequestAllTeamsEvent ev = new RequestAllTeamsEvent();
+
+    teamService.requestAllTeams(ev);
+
+    List<Team> allTeams = teamService.requestAllTeams(ev);
+
+    assertTrue(allTeams.size() == 0);
+    
+  }
+}

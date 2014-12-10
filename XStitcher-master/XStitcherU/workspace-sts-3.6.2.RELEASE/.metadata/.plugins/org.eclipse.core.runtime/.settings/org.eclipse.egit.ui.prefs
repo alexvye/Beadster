@@ -1,0 +1,2 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>Fixed missing file problem</message>\n<message>Implemented one transaction end to end to the momentum db using the new&\#x0A;RESTful api.</message>\n<message>Added MySql integration, wired up sample mysql repository with&\#x0A;accomapnying integration test</message>\n</messages>
+eclipse.preferences.version=1

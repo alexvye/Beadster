@@ -1,0 +1,5 @@
+package vye.core.events;
+
+public class CardDrawnEvent {
+
+}

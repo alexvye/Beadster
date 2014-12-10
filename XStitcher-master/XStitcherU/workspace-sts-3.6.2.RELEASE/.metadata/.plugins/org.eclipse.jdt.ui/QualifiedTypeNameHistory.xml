@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="vye.rest.domain.Card"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="com.google.gson.GsonBuilder"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+<fullyQualifiedTypeName name="java.util.UUID"/>
+<fullyQualifiedTypeName name="org.jboss.logging.Property"/>
+<fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.config.EnableJpaRepositories"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="org.springframework.boot.test.SpringApplicationConfiguration"/>
+<fullyQualifiedTypeName name="vye.config.ApplicationContext"/>
+<fullyQualifiedTypeName name="vye.comtroller.HomeController"/>
+<fullyQualifiedTypeName name="vye.repository.ChallengesRepository"/>
+<fullyQualifiedTypeName name="vye.datajpa.model.Challenge"/>
+<fullyQualifiedTypeName name="org.springframework.test.context.web.WebAppConfiguration"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.EnableTransactionManagement"/>
+<fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.Table"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="medavie.momentum.repository.MySqlRepository"/>
+<fullyQualifiedTypeName name="medavie.momentum.domain.Challenge"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="medavie.momentum.domain.rest.Challenge"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="medavie.momentum.domain.rest.Badge"/>
+<fullyQualifiedTypeName name="medavie.momentum.events.fitness.RequestAllTeamsEvent"/>
+<fullyQualifiedTypeName name="medavie.momentum.events.fitness.AllTeamsEvent"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="medavie.momentum.domain.rest.Team"/>
+<fullyQualifiedTypeName name="medavie.momentum.repository.TeamRepository"/>
+<fullyQualifiedTypeName name="medavie.momentum.domain.TeamDAO"/>
+<fullyQualifiedTypeName name="medavie.momentum.services.TeamService"/>
+<fullyQualifiedTypeName name="medavie.momentum.services.TeamEventHandler"/>
+<fullyQualifiedTypeName name="medavie.momentum.config.ApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.test.context.ContextConfiguration"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+</qualifiedTypeNameHistroy>

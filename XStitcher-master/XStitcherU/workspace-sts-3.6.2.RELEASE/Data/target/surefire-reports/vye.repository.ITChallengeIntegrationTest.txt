@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: vye.repository.ITChallengeIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.118 sec <<< FAILURE! - in vye.repository.ITChallengeIntegrationTest
+search_NoTodoEntriesFound_ShouldReturnEmptyList(vye.repository.ITChallengeIntegrationTest)  Time elapsed: 0.019 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at vye.repository.ITChallengeIntegrationTest.search_NoTodoEntriesFound_ShouldReturnEmptyList(ITChallengeIntegrationTest.java:30)
+

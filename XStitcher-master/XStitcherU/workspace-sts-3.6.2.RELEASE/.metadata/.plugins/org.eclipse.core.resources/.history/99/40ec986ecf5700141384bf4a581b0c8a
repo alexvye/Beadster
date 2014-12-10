@@ -1,0 +1,5 @@
+package vye.domain;
+
+public class Card {
+
+}

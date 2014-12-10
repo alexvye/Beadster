@@ -1,0 +1,3 @@
+INDEX VERSION 1.3+/Users/alexvye/Documents/workspace-sts-3.6.2.RELEASE/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2838940809.index
+2175001833.index

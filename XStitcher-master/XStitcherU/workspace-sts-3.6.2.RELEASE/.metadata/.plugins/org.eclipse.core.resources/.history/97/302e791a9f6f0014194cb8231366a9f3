@@ -1,0 +1,47 @@
+package medavie.momentum.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import medavie.momentum.domain.rest.Team;
+import medavie.momentum.events.fitness.AllTeamsEvent;
+import medavie.momentum.events.fitness.RequestAllTeamsEvent;
+import medavie.momentum.services.TeamService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@Controller
+@RequestMapping("/momentum/api/v1/teams")
+public class MomentumQueriesController {
+
+    private static Logger LOG = LoggerFactory.getLogger(MomentumQueriesController.class);
+
+    @Autowired
+    private TeamService teamService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<Team> getAllTeams() {
+    	RequestAllTeamsEvent requestAllTeamsEvent = new RequestAllTeamsEvent();
+        return teamService.requestAllTeams(requestAllTeamsEvent);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Team> viewTeam(@PathVariable String id) {
+
+        // todo implement the get/id method
+        return null;
+    }
+}

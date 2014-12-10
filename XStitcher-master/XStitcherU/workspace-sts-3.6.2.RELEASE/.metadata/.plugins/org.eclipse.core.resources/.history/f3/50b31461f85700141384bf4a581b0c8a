@@ -1,0 +1,13 @@
+package vye.core.events;
+
+import java.util.List;
+
+public class QueryHandEvent {
+	
+	private List<Card> cards;
+	
+	QueryHandEvent(List<Card> cards) {
+		
+	}
+
+}

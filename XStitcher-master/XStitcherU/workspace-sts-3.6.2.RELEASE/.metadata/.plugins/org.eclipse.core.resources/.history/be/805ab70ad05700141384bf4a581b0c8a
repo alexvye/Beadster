@@ -1,0 +1,18 @@
+package vye.domain;
+
+enum Strings{
+	   STRING_ONE("ONE"), STRING_TWO("TWO")
+	};
+
+public class Card {
+	private int manaCost;
+	private int attack;
+	private int maxHealth;
+	private int currentHealth;
+	private DeathRattle deathRattle;
+	private BattleCry battleCry;
+	private boolean hasDivineShield;
+	private String name;
+	private String imageUrl;
+	private String descriptiveText;
+}
