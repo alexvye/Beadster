@@ -1,5 +1,0 @@
-package vye.core.events;
-
-public class CardPlayedEvent {
-
-}

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;Application.java&apos; to &apos;Data/src/main/java/vye.comtroller&apos;&#x0A;- Original project: &apos;gs-accessing-data-jpa&apos;&#x0A;- Destination element: &apos;Data/src/main/java/vye.comtroller&apos;&#x0A;- Original element: &apos;Application.java&apos;" description="Copy file" destination="=Data/src\/main\/java&lt;vye.comtroller" element1="src/main/java/hello/Application.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1414986731678" units="0" version="1.0"/>
-</session>

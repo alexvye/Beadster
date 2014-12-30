@@ -1,6 +1,0 @@
-//com.springsource.config.ui.prefs.activePageIndex\:/demo/src/main/resources/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/momentum/src/main/resources/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage id\="com.springsource.sts.config.ui.editors.mvc" index\="5" kind\="formPage" uri\="http\://www.springframework.org/schema/mvc"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/momentum/src/main/webapp/WEB-INF/applicationContext-security.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/momentum/src/main/webapp/WEB-INF/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/momentum/src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
-eclipse.preferences.version=1

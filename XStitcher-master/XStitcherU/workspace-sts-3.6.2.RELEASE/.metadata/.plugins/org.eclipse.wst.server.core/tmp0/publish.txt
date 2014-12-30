@@ -1,4 +1,0 @@
-#Tomcat publish data
-#Tue Nov 18 23:55:05 AST 2014
-org.eclipse.jst.jee.server\:/binary\:/Users/alexvye/.m2/repository/org/springframework/spring-web/4.0.7.RELEASE/spring-web-4.0.7.RELEASE.jar=/Applications/sts-bundle/pivotal-tc-server-developer-3.0.0.RELEASE/base-instance/wtpwebapps/momentum/WEB-INF/lib/spring-web-4.0.7.RELEASE.jar
-org.eclipse.jst.jee.server\:momentum=/Applications/sts-bundle/pivotal-tc-server-developer-3.0.0.RELEASE/base-instance/wtpwebapps/momentum
