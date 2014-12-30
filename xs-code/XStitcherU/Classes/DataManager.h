@@ -13,8 +13,6 @@ extern int group;
 @interface DataManager : NSObject {
 }
 
-@property (strong, nonatomic) NSDictionary *anchorDMC;
-
 +(NSString *)archivePathShoppingList;
 +(NSString *)archivePathQuantity;
 +(NSString *)archivePathProjects;
@@ -23,7 +21,6 @@ extern int group;
 -(void)saveQuantity:(id)floss;
 -(BOOL)anyProjects;
 -(NSArray*)loadProjects;
--(void)loadAnchor;
 -(void)loadDataForBrand :(NSString*)brandName :(NSString*)csvFilename :(NSString*)catFilename;
 -(void)loadSpecialtyProducts;
 @end

@@ -125,7 +125,6 @@ float searchBarHeight;
     NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     FlossDB* floss = (FlossDB*) managedObject;
     cell.data = floss;
-    [cell drawAnchor:floss.id];
     
     [[cell primaryLabel] setText:floss.primaryLabel];
     [[cell secondaryLabel] setText:floss.detailedLabel];

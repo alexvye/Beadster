@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="cRD-pf-87X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="cRD-pf-87X">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Floss Brand View Controller - XStitcher-->
+        <!--Beadster-->
         <scene sceneID="Zz7-8q-Dep">
             <objects>
                 <viewController storyboardIdentifier="brandView" id="cRD-pf-87X" customClass="FlossBrandViewController" sceneMemberID="viewController">
@@ -91,7 +92,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="XStitcher" id="Ji3-aX-B71"/>
+                    <navigationItem key="navigationItem" title="Beadster" id="Ji3-aX-B71"/>
                     <connections>
                         <outlet property="inventoryButton" destination="1nq-x8-NIw" id="VOE-NC-WWB"/>
                         <outlet property="matcherButton" destination="Xsg-aU-2h7" id="sEr-Om-C42"/>
@@ -138,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="-810" y="-1122"/>
         </scene>
-        <!--Matcher View Controller - My Stash-->
+        <!--My Stash-->
         <scene sceneID="aYx-Qf-WZd">
             <objects>
                 <tableViewController storyboardIdentifier="matchView" title="My Stash" id="Abd-n4-adA" customClass="MatcherViewController" sceneMemberID="viewController">
@@ -168,7 +169,7 @@
             </objects>
             <point key="canvasLocation" x="381" y="-1499"/>
         </scene>
-        <!--Inventory Table View Controller - Inventory-->
+        <!--Inventory-->
         <scene sceneID="J3f-sp-w2l">
             <objects>
                 <tableViewController storyboardIdentifier="inventoryView" id="fJA-Ym-tUD" customClass="InventoryTableViewController" sceneMemberID="viewController">
@@ -201,7 +202,7 @@
             </objects>
             <point key="canvasLocation" x="381" y="-318"/>
         </scene>
-        <!--Shopper View Controller - Shopping List-->
+        <!--Shopping List-->
         <scene sceneID="kzf-tU-DBi">
             <objects>
                 <tableViewController storyboardIdentifier="shopperView" id="55z-H4-SgD" customClass="ShopperViewController" sceneMemberID="viewController">
@@ -234,7 +235,7 @@
             </objects>
             <point key="canvasLocation" x="364" y="839"/>
         </scene>
-        <!--Project Table View Controller - Projects-->
+        <!--Projects-->
         <scene sceneID="Glc-QT-31K">
             <objects>
                 <tableViewController storyboardIdentifier="projectView" id="yF0-N2-Sy7" customClass="ProjectTableViewController" sceneMemberID="viewController">
@@ -271,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="388" y="1987"/>
         </scene>
-        <!--Project Add View Controller - Add project-->
+        <!--Add project-->
         <scene sceneID="jGN-q0-KDs">
             <objects>
                 <viewController storyboardIdentifier="projectAddView" id="IMz-bZ-Rq4" customClass="ProjectAddViewController" sceneMemberID="viewController">
@@ -337,7 +338,7 @@
             </objects>
             <point key="canvasLocation" x="1680" y="1981"/>
         </scene>
-        <!--Inventory Detail Table View Controller - Inventory Detail-->
+        <!--Inventory Detail-->
         <scene sceneID="Piv-0H-uGJ">
             <objects>
                 <tableViewController storyboardIdentifier="inventoryDetailView" id="VuT-CJ-At8" customClass="InventoryDetailTableViewController" sceneMemberID="viewController">

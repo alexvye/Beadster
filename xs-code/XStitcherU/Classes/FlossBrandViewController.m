@@ -90,7 +90,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"InventorySeque"]) {
         InventoryTableViewController* inventory = (InventoryTableViewController*) segue.destinationViewController;
-        inventory.passedBrand = @"dmc";
+        inventory.passedBrand = @"beads";
     } else if([segue.identifier isEqualToString:@"MatcherSeque"]) {
         MatcherViewController* matcher = (MatcherViewController*) segue.destinationViewController;
         matcher.source = MATCHER;

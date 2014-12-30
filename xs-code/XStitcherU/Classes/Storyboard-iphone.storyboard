@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dR9-5p-lE8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dR9-5p-lE8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Floss Brand View Controller - XStitcher-->
+        <!--Beadster-->
         <scene sceneID="d84-ld-LEC">
             <objects>
                 <viewController storyboardIdentifier="brandView" id="dR9-5p-lE8" customClass="FlossBrandViewController" sceneMemberID="viewController">
@@ -19,24 +20,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="Aged Paper - 640x1136 - iPhone 5.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="GX4-7Z-e7R">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dh-zg-1Xq">
-                                <rect key="frame" x="165" y="399" width="130" height="70"/>
-                                <state key="normal" image="729-top-list.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="suk-aJ-atf" kind="push" identifier="MyStashSeque" id="xfm-nU-HDq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zun-el-T9I">
-                                <rect key="frame" x="20" y="399" width="130" height="70"/>
-                                <state key="normal" image="873-magic-wand.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="uz8-s6-S5D" kind="push" identifier="Special" id="ALa-Rt-nNc"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brand.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Bq-WY-Im4">
                                 <rect key="frame" x="40" y="84" width="240" height="94"/>
                             </imageView>
@@ -76,17 +59,25 @@
                                     <segue destination="eFc-nR-L4d" kind="push" identifier="ProjectSeque" id="C04-TE-WWr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dh-zg-1Xq">
+                                <rect key="frame" x="20" y="398" width="130" height="70"/>
+                                <state key="normal" image="729-top-list.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="suk-aJ-atf" kind="push" identifier="MyStashSeque" id="xfm-nU-HDq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="XStitcher" id="sSb-Ny-WRu"/>
+                    <navigationItem key="navigationItem" title="Beadster" id="sSb-Ny-WRu"/>
                     <connections>
                         <outlet property="inventoryButton" destination="Yud-X3-URJ" id="WLt-vI-9Hg"/>
                         <outlet property="matcherButton" destination="TkS-Rs-6jN" id="l1A-Hc-N66"/>
                         <outlet property="myStashButton" destination="7dh-zg-1Xq" id="EaI-XI-HRQ"/>
                         <outlet property="projectButton" destination="kRi-og-VTD" id="mtJ-yg-p4g"/>
                         <outlet property="shoppingButton" destination="paT-MO-ds9" id="z02-Z5-W37"/>
-                        <outlet property="specialtyButton" destination="Zun-el-T9I" id="Cob-FK-4KO"/>
                         <outlet property="view" destination="97T-0S-Qgr" id="NaM-DB-gMR"/>
                     </connections>
                 </viewController>
@@ -94,7 +85,7 @@
             </objects>
             <point key="canvasLocation" x="-1043" y="1552"/>
         </scene>
-        <!--Matcher View Controller - My Stash-->
+        <!--My Stash-->
         <scene sceneID="MVW-MR-XVb">
             <objects>
                 <tableViewController storyboardIdentifier="matchView" title="My Stash" id="suk-aJ-atf" customClass="MatcherViewController" sceneMemberID="viewController">
@@ -124,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="-229" y="-134"/>
         </scene>
-        <!--Inventory Table View Controller - Inventory-->
+        <!--Inventory-->
         <scene sceneID="vkZ-ir-Wn6">
             <objects>
                 <tableViewController storyboardIdentifier="inventoryView" id="37E-qd-bFZ" customClass="InventoryTableViewController" sceneMemberID="viewController">
@@ -157,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="-235" y="522"/>
         </scene>
-        <!--Shopper View Controller - Shopping List-->
+        <!--Shopping List-->
         <scene sceneID="PlO-Ho-n2C">
             <objects>
                 <tableViewController storyboardIdentifier="shopperView" id="hxN-4p-bCg" customClass="ShopperViewController" sceneMemberID="viewController">
@@ -190,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="-283" y="2732"/>
         </scene>
-        <!--Project Table View Controller - Projects-->
+        <!--Projects-->
         <scene sceneID="6zt-5O-e1Z">
             <objects>
                 <tableViewController storyboardIdentifier="projectView" id="eFc-nR-L4d" customClass="ProjectTableViewController" sceneMemberID="viewController">
@@ -227,40 +218,7 @@
             </objects>
             <point key="canvasLocation" x="-276" y="2051"/>
         </scene>
-        <!--Specialty Table View Controller-->
-        <scene sceneID="dRT-xm-3XF">
-            <objects>
-                <tableViewController id="uz8-s6-S5D" customClass="SpecialtyTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NiM-sA-W1r">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GaB-DE-4HQ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GaB-DE-4HQ" id="MHb-Mc-hte">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="uz8-s6-S5D" id="exd-gI-nFy"/>
-                            <outlet property="delegate" destination="uz8-s6-S5D" id="CgW-aH-0iU"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="rg2-Kc-749"/>
-                    <connections>
-                        <outlet property="view" destination="NiM-sA-W1r" id="J25-ZK-PAN"/>
-                        <segue destination="37E-qd-bFZ" kind="push" identifier="SpecialtyInvDetailSeque" id="Zuv-hN-EYu"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gMc-o3-awy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-255" y="1303"/>
-        </scene>
-        <!--Project Add View Controller - Add project-->
+        <!--Add project-->
         <scene sceneID="Hws-KI-iIv">
             <objects>
                 <viewController storyboardIdentifier="projectAddView" id="q8U-qy-Xbp" customClass="ProjectAddViewController" sceneMemberID="viewController">
@@ -328,7 +286,7 @@
             </objects>
             <point key="canvasLocation" x="320" y="2051"/>
         </scene>
-        <!--Inventory Detail Table View Controller - Inventory Detail-->
+        <!--Inventory Detail-->
         <scene sceneID="PJP-8o-Onl">
             <objects>
                 <tableViewController storyboardIdentifier="inventoryDetailView" id="51S-CR-v5Z" customClass="InventoryDetailTableViewController" sceneMemberID="viewController">
@@ -363,7 +321,6 @@
         <image name="729-top-list.png" width="28" height="22"/>
         <image name="755-filing-cabinet.png" width="24" height="28"/>
         <image name="761-gift.png" width="28" height="28"/>
-        <image name="873-magic-wand.png" width="28" height="28"/>
         <image name="878-binoculars.png" width="28" height="20"/>
         <image name="887-notepad.png" width="24" height="28"/>
         <image name="Aged Paper - 640x1136 - iPhone 5.jpg" width="640" height="1136"/>
@@ -376,6 +333,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="xfm-nU-HDq"/>
-        <segue reference="Zuv-hN-EYu"/>
     </inferredMetricsTieBreakers>
 </document>

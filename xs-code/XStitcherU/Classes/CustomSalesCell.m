@@ -118,13 +118,7 @@ float secondaryFont;
 }
 
 -(void)drawBuyOption:(NSString*)brand {
-/*
-    if(anchor!=NULL) {
-        [self.contentView addSubview:anchorButton];
-    } else {
-        [self.anchorButton removeFromSuperview];
-    }
- */
+
 }
 
 - (void)dealloc {

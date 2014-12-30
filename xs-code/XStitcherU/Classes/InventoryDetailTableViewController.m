@@ -158,19 +158,10 @@ float rowHeight;
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:5]; //default was 20
     
-    // Edit the sort key as appropriate.
-    
-    NSSortDescriptor *sortDescriptor;
-    
-    
     //
-    // anchor and dmc sort by id, the rest by label
+    // beads sort by id, the rest by label
     //
-    if([passedBrand isEqual:@"dmc"] || [passedBrand isEqual:@"anchor"]) {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    } else {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"detailedLabel" ascending:YES];
-    }
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
     
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     

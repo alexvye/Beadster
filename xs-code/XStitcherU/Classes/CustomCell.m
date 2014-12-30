@@ -18,7 +18,6 @@
 @synthesize flossImage;
 @synthesize shoppingButton;
 @synthesize projectButton;
-@synthesize anchorButton;
 @synthesize primaryLabel;
 @synthesize secondaryLabel;
 @synthesize quantityTextField;
@@ -95,11 +94,7 @@ int const MYSTASH   = 5;
         // Quantity text field
         //
         if(self.source == MATCHER) {
-            anchorButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [anchorButton setImage:[UIImage imageNamed:@"836-anchor.png"] forState:UIControlStateNormal];
-            [anchorButton addTarget:self
-                             action:@selector(convertAnchor:)
-                   forControlEvents:UIControlEventTouchUpInside];
+            // noop
     
         } else {
             
@@ -133,28 +128,6 @@ int const MYSTASH   = 5;
 
 -(IBAction) addToProject: (UIButton*) aButton {
 	[self popupActionSheet];
-}
-
--(IBAction) convertAnchor: (UIButton*) aButton {
-    
-    FlossDB* floss = (FlossDB*)self.data;
-    NSString* anchor = [[DataManager instance].anchorDMC valueForKey:floss.id];
-	NSString *message = [NSString stringWithFormat:@"Anchor %@ is a match for DMC %@",
-						 anchor, floss.id];
-    
-    [[DataManager instance] saveShopping:self.data];
-	
-	//
-	// alert the user
-	//
-	UIAlertView *alertDialog;
-	alertDialog = [[UIAlertView alloc]
-				   initWithTitle:@"Anchor"
-				   message:message
-				   delegate:nil
-				   cancelButtonTitle:@"Ok"
-				   otherButtonTitles:nil];
-	[alertDialog show];
 }
 
 -(void)popupActionSheet {
@@ -334,7 +307,6 @@ int const MYSTASH   = 5;
         } else if(self.source == MATCHER){
             projectButton.frame = frame1;
             shoppingButton.frame  = frame2;
-            anchorButton.frame = frame3;
             
         } else {
             projectButton.frame = frame1;
@@ -373,7 +345,6 @@ int const MYSTASH   = 5;
     } else if(self.source == MATCHER){
         projectButton.frame = frame1;
         shoppingButton.frame  = frame2;
-        anchorButton.frame = frame3;
         
     } else {
         projectButton.frame = frame1;
@@ -383,19 +354,6 @@ int const MYSTASH   = 5;
 }
 	
 
-}
-
-- (void)drawAnchor:(NSString*)dmc {
-    NSString* anchor = [[DataManager instance].anchorDMC valueForKey:dmc];
-
-    //
-    // Not all dmc have an anchor map
-    //
-    if(anchor!=NULL) {
-        [self.contentView addSubview:anchorButton];
-    } else {
-        [self.anchorButton removeFromSuperview];
-    }
 }
 
 - (void)dealloc {

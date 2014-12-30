@@ -284,308 +284,11 @@
          
      } else {
          NSLog(@"DB found");
-         self.localSystem = (System*)[result objectAtIndex:0];
-         [self magicBrandFix];
      }
-    
-    [self addFirstCohort]; // add anchor, gast, wdw to base dmc db
-    
-    bool updated = self.localSystem.updated.boolValue;
-    
-    if(!updated) {
-        //
-        // 3 parts to upgrade - inventory, shopping list and projects
-        //
-        // inventory
-        //
-        NSDictionary* flossQuantity;
-        if([[NSFileManager defaultManager] fileExistsAtPath:[DataManager archivePathQuantity]]) {
-            flossQuantity = [NSKeyedUnarchiver unarchiveObjectWithFile:[DataManager archivePathQuantity]];
-            
-            if(flossQuantity != nil) {
-                [self updateInventory:flossQuantity];
-            }
-        }
-        
-        //
-        // upgrade shopping
-        //
-        
-        if([[NSFileManager defaultManager] fileExistsAtPath:[DataManager archivePathShoppingList]]) {
-            NSArray* shoppingList  = [NSKeyedUnarchiver unarchiveObjectWithFile:[DataManager archivePathShoppingList]];
-            if(shoppingList != nil) {
-                [self updateShopping:shoppingList];
-            }
-        }
-        
-        //
-        // upgrade projects
-        //
-        NSArray* projects;
-        if([[NSFileManager defaultManager] fileExistsAtPath:[DataManager archivePathProjects]]) {
-            projects = [NSKeyedUnarchiver unarchiveObjectWithFile:[DataManager archivePathProjects]];
-            if(projects != nil) {
-                [self updateProject:projects];
-            }
-        }
-        
-        //
-        // mark it as updated so we don't check again
-        //
-        self.localSystem.updated = [NSNumber numberWithBool:true];
-        if(![self.managedObjectContext save:&error]) {
-            NSLog(@"Error - Could not save: %@",[error localizedDescription]);
-        }
-        NSLog(@"System wasn't updated, now is");
-    } else {
-        NSLog(@"System has already been updated");
-    }
-
-}
+  }
 
 //
-// update project
-//
--(void)updateProject: (NSArray*)projects {
-    NSError *error;
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Floss" inManagedObjectContext:self.managedObjectContext]];
-    NSPredicate *predicate;
-    NSArray *results;
-    int i = 0;
-    
-    for(Project* project in projects) {
-        i++;
-        ProjectDB* newProject = (ProjectDB*) [NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
-        newProject.desc = project.description;
-        newProject.name = project.name;
-        
-        //
-        // need to search floss table
-        //
-        for(NSString* flossId in project.floss) {
-            predicate = [NSPredicate predicateWithFormat:@"brand == %@ and id == %@", @"dmc", flossId];
-            [request setPredicate:predicate];
-            
-            error = nil;
-            results = [self.managedObjectContext executeFetchRequest:request error:&error];
-            if(results.count > 0) {
-                
-                FlossDB* flossDB = (FlossDB*) [results objectAtIndex:0];
-                ProjectFlossDB* projectFloss  = (ProjectFlossDB*) [NSEntityDescription insertNewObjectForEntityForName:@"ProjectFloss" inManagedObjectContext:self.managedObjectContext];
-                projectFloss.brand = flossDB.brand;
-                projectFloss.detailedLabel = flossDB.detailedLabel;
-                projectFloss.fileName = flossDB.fileName;
-                projectFloss.id = flossId;
-                projectFloss.primaryLabel = flossDB.primaryLabel;
-                projectFloss.quantity = [NSNumber numberWithInt:1];
-                
-                [newProject addProjectFlossRelObject:projectFloss];
-            }
-        }
-        
-        if(![self.managedObjectContext save:&error]) {
-            NSLog(@"Error - Could not save: %@",[error localizedDescription]);
-        }
-    }
-    NSLog(@"%d projects updated",i);
-}
-
--(void) addFirstCohort {
-    
-    if(self.localSystem.version.intValue < 54) {
-        
-        NSLog(@"System version was %d, upgrading to 54", self.localSystem.version.intValue);
-    
-        //
-        // Check in app purchases
-        //
-        [[DataManager instance] loadSpecialtyProducts];
-         
-        //
-        // Set the system version correctly so that they dont get loaded again
-        //
-        [self.localSystem setVersion:[NSNumber numberWithInt:54]]; // 10xmajor +minor
-        self.localSystem.last_update = [NSDate date];
-        self.localSystem.last_device = [UIDevice currentDevice].name;
-    
-        NSError *error = nil;
-        if(![self.managedObjectContext save:&error]) {
-            NSLog(@"Error - Could not save: %@",[error localizedDescription]);
-        }
-    } else {
-        NSLog(@"System version was %d, no need to upgrade", self.localSystem.version.intValue);
-    }
-}
-
--(void)magicBrandFix {
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"brand == %@", @"dmc"];
-    NSError *error = nil;
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Brand" inManagedObjectContext:self.managedObjectContext]];
-    
-    NSArray *results;
-    [request setPredicate:predicate];
-
-    results = [self.managedObjectContext executeFetchRequest:request error:&error];
-    if(results.count > 0) {
-        NSLog(@"No need for magic cat fix");
-    } else {
-        //
-        // Now load the categories
-        //
-        NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"brand" ofType:@"csv"];
-        NSStringEncoding encoding = NSASCIIStringEncoding;
-        
-        if(filePath) {
-            NSString *drugData = [NSString stringWithContentsOfFile:filePath encoding:encoding error:&error];
-            NSScanner *scanner = [NSScanner scannerWithString:drugData];
-            NSScanner *lineScanner;
-            NSString *line;
-            NSCharacterSet *commaSet = [NSCharacterSet characterSetWithCharactersInString:@","];
-            
-            //
-            // The parsed data
-            //
-            NSString *brand;
-            NSString *group;
-            NSString* name;
-            
-            int i = 0;
-            while(![scanner isAtEnd]) {
-                //
-                // get next line
-                //
-                [scanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet] intoString:&line];
-                lineScanner = [NSScanner scannerWithString:line];
-                
-                //
-                // parse the line
-                //
-                [lineScanner scanUpToCharactersFromSet:commaSet  intoString:&brand];
-                [lineScanner scanString:@"," intoString:NULL];
-                [lineScanner scanUpToCharactersFromSet:commaSet  intoString:&group];
-                [lineScanner scanString:@"," intoString:NULL];
-                [lineScanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet]  intoString:&name];
-                
-                //
-                // store the data into DB
-                //
-                BrandDB *branddb = [NSEntityDescription
-                                    insertNewObjectForEntityForName:@"Brand" inManagedObjectContext:self.managedObjectContext];
-                [branddb setBrand:brand];
-                [branddb setName:name];
-                [branddb setGroup:[NSNumber numberWithInt:[group intValue]]];
-                
-                if(![self.managedObjectContext save:&error]) {
-                    NSLog(@"Error - Could not save: %@",[error localizedDescription]);
-                }
-                
-                //
-                // Update count
-                //
-                i++;
-                
-            }
-            NSLog(@"No dmc cat found, so we loaded %d dmc category records",i);
-        }
-    }
-}
-
-
-//
-// update shopping
-//
--(void)updateShopping: (NSArray*)shopping {
-    //
-    // Shopping is jusr an array of strings
-    //
-    int i = 0;
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Floss" inManagedObjectContext:self.managedObjectContext]];
-    NSError *error = nil;
-    NSArray *results;
-    NSPredicate *predicate;
-    NSArray* items;
-    
-    for(NSString* nonParsed in shopping) {
-        i++;
-        
-        //
-        // have to parse the id string because my past self was an idiot
-        //
-        items = [nonParsed componentsSeparatedByString:@":"];
-        //
-        // figure out image file name, depending on brand
-        //
-        NSString* code = nonParsed;
-        if([items count] > 1) {
-            code = [items objectAtIndex:0];
-        }
-        
-        //
-        // do the search
-        //
-        predicate = [NSPredicate predicateWithFormat:@"brand == %@ and id == %@", @"dmc", code];
-        [request setPredicate:predicate];
-        
-        error = nil;
-        results = [self.managedObjectContext executeFetchRequest:request error:&error];
-        
-        //
-        // xstitcher 4.1 only allowed 1 for shopping
-        //
-        if(results.count >0) {
-            FlossDB* updatedFloss = (FlossDB*) [results objectAtIndex:0];
-            updatedFloss.shoppingQuantity = [NSNumber numberWithInt:1];
-        }
-
-        if(![self.managedObjectContext save:&error]) {
-            NSLog(@"Error - Could not save: %@",[error localizedDescription]);
-        }
-    }
-    NSLog(@"%d shopping items updated",i);
-}
-
-//
-// update inventory
-//
--(void)updateInventory: (NSDictionary*)flossDictionary {
-    int i = 0;
-    NSArray* flossList = flossDictionary.keyEnumerator.allObjects;
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Floss" inManagedObjectContext:self.managedObjectContext]];
-    NSPredicate *predicate;
-    NSError *error;
-    NSArray *results;
-    
-    for(NSString* floss in flossList) {
-        i++;
-        
-        predicate = [NSPredicate predicateWithFormat:@"brand == %@ and id == %@", @"dmc", floss];
-        [request setPredicate:predicate];
-        
-        error = nil;
-        results = [self.managedObjectContext executeFetchRequest:request error:&error];
-        
-        //
-        // xstitcher 4.1 only allowed 1 for shopping
-        //
-        if(results.count >0) {
-            FlossDB* updatedFloss = (FlossDB*) [results objectAtIndex:0];
-            updatedFloss.quantity = (NSNumber*)[flossDictionary objectForKey:floss];
-        }
-        
-        if(![self.managedObjectContext save:&error]) {
-            NSLog(@"Error - Could not save: %@",[error localizedDescription]);
-        }
-    }
-    NSLog(@"%d inventory items updated",i);
-}
-
-//
-// Loads the drug data from a csv file to prime the database. Only needs to be done once, ever.
+// Loads the  data from a csv file to prime the database. Only needs to be done once, ever.
 //
 -(void)loadData {
 
@@ -595,7 +298,7 @@
      //
      // Load the threads
      //
-         NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"dmc" ofType:@"csv"];
+         NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"beads" ofType:@"csv"];
          NSStringEncoding encoding = NSASCIIStringEncoding;
      
          if(filePath) {
@@ -642,22 +345,16 @@
                  [floss setId:flossID];
                  [floss setDetailedLabel:description];
          
-                 NSString *suffix = @".png";
-                 if([flossID characterAtIndex:0] == 'S') {
-                     flossID = [flossID lowercaseString];
-                     suffix = @".gif";
-                 }
+                 NSString *suffix = @".jpg";
+      
                  NSString *fileName = [NSString stringWithFormat:@"%@%@",flossID, suffix];
 
                  [floss setFileName:fileName];
                  [floss setGroup:[NSNumber numberWithInt:[group intValue]]];
                  [floss setQuantity:[NSNumber numberWithInt:0]];
                  [floss setShoppingQuantity:[NSNumber numberWithInt:0]];
-                 if([flossID characterAtIndex:0] == 'S' || [flossID characterAtIndex:0] == 'e') {
-                     [floss setSort:[NSNumber numberWithInt:[flossID substringFromIndex:1].intValue]];
-                 } else {
-                     [floss setSort:[NSNumber numberWithInt:flossID.intValue]];
-                 }
+                 [floss setSort:[NSNumber numberWithInt:flossID.intValue]];
+                 NSLog(@"id = %@ sort = %d",flossID, flossID.intValue);
      
                  if(![context save:&error]) {
                      NSLog(@"Error - Could not save: %@",[error localizedDescription]);

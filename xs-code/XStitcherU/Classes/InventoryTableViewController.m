@@ -34,7 +34,7 @@ float titleFontSize;
     // default the brand
     //
     if(self.passedBrand == nil) {
-        self.passedBrand = @"dmc";
+        self.passedBrand = @"beads";
     }
     
     //
