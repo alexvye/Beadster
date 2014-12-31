@@ -20,24 +20,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Aged Paper - 2048x1536 - iPad.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="e7a-Q6-nLN">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKE-sP-IYf" userLabel="Button - Matcher">
-                                <rect key="frame" x="175" y="811" width="180" height="120"/>
-                                <state key="normal" title="Button" image="873-magic-wand.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ha9-Jq-5X1" kind="push" identifier="Special" id="kLt-AR-skN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-6I-vZ5" userLabel="Button - Project">
-                                <rect key="frame" x="411" y="811" width="180" height="120"/>
-                                <state key="normal" title="Button" image="729-top-list.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Abd-n4-adA" kind="push" identifier="MyStashSeque" id="lfd-JL-tUe"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5j-0K-Dea">
                                 <rect key="frame" x="155" y="10" width="28" height="22"/>
                                 <state key="normal" image="729-top-list.png">
@@ -89,6 +71,15 @@
                                     <segue destination="yF0-N2-Sy7" kind="push" id="86i-ml-hv7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-6I-vZ5" userLabel="Button - Project">
+                                <rect key="frame" x="176" y="796" width="180" height="120"/>
+                                <state key="normal" title="Button" image="729-top-list.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Abd-n4-adA" kind="push" identifier="MyStashSeque" id="lfd-JL-tUe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -99,45 +90,12 @@
                         <outlet property="myStashButton" destination="8Iu-6I-vZ5" id="Huh-68-qEj"/>
                         <outlet property="projectButton" destination="An2-bm-IWN" id="9u5-la-5La"/>
                         <outlet property="shoppingButton" destination="IGX-XD-7dt" id="tYz-tj-ALj"/>
-                        <outlet property="specialtyButton" destination="fKE-sP-IYf" id="fRy-nP-MjX"/>
                         <outlet property="view" destination="xrK-rT-gBB" id="PpT-4a-cXt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P2L-h0-9c2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1129" y="162"/>
-        </scene>
-        <!--Specialty Table View Controller-->
-        <scene sceneID="Q7E-me-zaI">
-            <objects>
-                <tableViewController id="ha9-Jq-5X1" customClass="SpecialtyTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fdp-aw-sVs">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="A6W-iX-Us8">
-                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A6W-iX-Us8" id="87E-MB-XLo">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ha9-Jq-5X1" id="TCA-zH-BjS"/>
-                            <outlet property="delegate" destination="ha9-Jq-5X1" id="Y5b-Gt-Wuv"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="zVP-1Y-796"/>
-                    <connections>
-                        <segue destination="fJA-Ym-tUD" kind="push" identifier="SpecialtyInvDetailSeque" id="iVM-yQ-brf"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tT8-WF-UsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-810" y="-1122"/>
         </scene>
         <!--My Stash-->
         <scene sceneID="aYx-Qf-WZd">
@@ -387,6 +345,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="lfd-JL-tUe"/>
-        <segue reference="5DL-g3-aJH"/>
     </inferredMetricsTieBreakers>
 </document>
