@@ -41,7 +41,7 @@
 //
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    NSLog(@"INT_MAX:    %i",   INT_MAX);
     //
     // Check if we have upgraded from an old version
     //
@@ -354,7 +354,6 @@
                  [floss setQuantity:[NSNumber numberWithInt:0]];
                  [floss setShoppingQuantity:[NSNumber numberWithInt:0]];
                  [floss setSort:[NSNumber numberWithInt:flossID.intValue]];
-                 NSLog(@"id = %@ sort = %d",flossID, flossID.intValue);
      
                  if(![context save:&error]) {
                      NSLog(@"Error - Could not save: %@",[error localizedDescription]);

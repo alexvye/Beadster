@@ -161,7 +161,7 @@ float rowHeight;
     //
     // beads sort by id, the rest by label
     //
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
     
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
